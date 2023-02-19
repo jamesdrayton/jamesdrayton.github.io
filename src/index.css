@@ -16,16 +16,30 @@ code {
   transition: opacity 1s ease-in-out;
 }
 
+.home {
+  border: 2px solid #73AD21;
+  mix-blend-mode: difference;
+  padding: 20px; 
+  position: relative;
+  top: 2vh;
+  height: 90vh;
+  left: 2vw;
+  width: 93vw;
+  z-index: 10;
+}
+
 /* Header Styles */
 
 .Header {
   font-size: 16px;
-  font-weight: 200;
   margin: 0.1em 0 0 0.04em;
   padding: 6px;
 }
 
 .Header h2 {
+  display: relative;
+  margin-top: 0.1em;
+  font-weight: normal;
   font-size: 20px;
 }
 
@@ -48,7 +62,7 @@ code {
 
 .navbar a {
   color: #333;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   text-decoration: none;
 }
@@ -77,7 +91,7 @@ code {
   overflow: hidden;
   padding: 40px;
   margin-right: 1%;
-  margin-top: 10%;
+  margin-top: 15%;
   top: 20vh;
   z-index: 2;
 }
@@ -85,7 +99,7 @@ code {
 /* Projects Page Styles */
 
 .projects {
-  align-items: center;
+  align-items: right;
   float: right;
   font-weight: bold;
   margin-bottom: 2px;
@@ -93,8 +107,13 @@ code {
   padding: 20px;
   position: relative;
   margin-right: 1%;
-  margin-top: 10%;
+  margin-top: 15%;
   z-index: 2;
+}
+
+.projects h3:hover {
+  color: #73AD21;
+  mix-blend-mode: difference;
 }
 
 /* Contacts Page Styles */
@@ -107,20 +126,32 @@ code {
   margin-right: 20px;
   padding: 20px;
   margin-right: 1%;
-  margin-top: 10%;
+  margin-top: 15%;
   z-index: 2;
 }
 
-/* App Styles */
+/* Demo Styles */
 
-.App {
+.home {
   border: 2px solid #73AD21;
-  height: 80vh;
-  left: 5vw;
   mix-blend-mode: difference;
   padding: 20px; 
   position: relative;
-  top: 6vh;
-  width: 90vw;
+  top: 2vh;
+  height: 90vh;
+  left: 2vw;
+  width: 93vw;
+  z-index: 10;
+}
+
+.demo {
+  border: 2px solid #73AD21;
+  mix-blend-mode: difference;
+  padding: 20px; 
+  position: relative;
+  top: 2vh;
+  height: 90vh;
+  left: 2vw;
+  width: 93vw;
   z-index: 10;
 }
