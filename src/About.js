@@ -1,12 +1,11 @@
 
 // My about page. Includes a summary of who I am, what I'm up to, and my resume + contact info.
-const About = ({pages}) => {
-    const thisPage = pages.filter(page => page.name === 'about')[0];
+const About = ({page}) => {
 
     return ( 
         <section className="about" style={{
-            display: thisPage.display,
-            opacity: thisPage.opacity
+            display: page.display,
+            opacity: page.opacity
         }}>
             <p className="aboutme">
                 <span> Growing up in Canada,  </span>

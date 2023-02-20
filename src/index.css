@@ -16,15 +16,16 @@ code {
   transition: opacity 1s ease-in-out;
 }
 
-.home {
+.page {
   border: 2px solid #73AD21;
   mix-blend-mode: difference;
   padding: 20px; 
+  margin-bottom: 25px;
   position: relative;
   top: 2vh;
   height: 90vh;
   left: 2vw;
-  width: 93vw;
+  width: 94%;
   z-index: 10;
 }
 
@@ -87,7 +88,7 @@ code {
   flex-direction: column;
   float: right;
   font-size: calc(10px + 1vmin);
-  font-weight: bold;
+  font-weight: 500;
   overflow: hidden;
   padding: 40px;
   margin-right: 1%;
@@ -111,9 +112,10 @@ code {
   z-index: 2;
 }
 
-.projects h3:hover {
+.projects h2:hover {
   color: #73AD21;
   mix-blend-mode: difference;
+  cursor: pointer;
 }
 
 /* Contacts Page Styles */
@@ -128,30 +130,4 @@ code {
   margin-right: 1%;
   margin-top: 15%;
   z-index: 2;
-}
-
-/* Demo Styles */
-
-.home {
-  border: 2px solid #73AD21;
-  mix-blend-mode: difference;
-  padding: 20px; 
-  position: relative;
-  top: 2vh;
-  height: 90vh;
-  left: 2vw;
-  width: 93vw;
-  z-index: 10;
-}
-
-.demo {
-  border: 2px solid #73AD21;
-  mix-blend-mode: difference;
-  padding: 20px; 
-  position: relative;
-  top: 2vh;
-  height: 90vh;
-  left: 2vw;
-  width: 93vw;
-  z-index: 10;
 }

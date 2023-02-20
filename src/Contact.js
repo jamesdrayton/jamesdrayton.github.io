@@ -1,12 +1,11 @@
 
 // My contact form, linkedin, and resume
-const Contact = ({pages}) => {
-    const thisPage = pages.filter(page => page.name === 'contact')[0];
+const Contact = ({page}) => {
 
     return ( 
         <section className="contact" style={{
-            display: thisPage.display,
-            opacity: thisPage.opacity
+            display: page.display,
+            opacity: page.opacity
         }}>
             <div className="contacts">
                 <p>Contacts page</p>
