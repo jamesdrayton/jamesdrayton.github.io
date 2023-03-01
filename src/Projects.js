@@ -1,14 +1,20 @@
 
 // A list of my projects containing a description of their purpose and the tools they use, as well as a demo when applicable.
-const Projects = ({pages}) => {
-    const thisPage = pages.filter(page => page.name === 'projects')[0];
-    
+const Projects = ({page, projects, updateDemo}) => {
+
     return ( 
         <section className="projects" style={{
-            display: thisPage.display,
-            opacity: thisPage.opacity
+            display: page.display,
+            opacity: page.opacity
         }}>
-            <p>Projects page</p>
+            <div className="project-list">
+                {projects.map((project) => (
+                    <div className="preview">
+                        <h2 onClick={() => updateDemo(project)}>{project.name}</h2>
+                        <a>{project.description}</a>
+                    </div>
+                ))}
+            </div>
         </section>
      );
 }

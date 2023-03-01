@@ -1,10 +1,11 @@
 /* General Styles */
 
 body {
-  background-color: rgba(128, 128, 128, 0.273);
   font-family: 'Helvetica Neue';
+  background-color: #FCFCFC;
   margin: 0;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
 }
 
@@ -16,16 +17,33 @@ code {
   transition: opacity 1s ease-in-out;
 }
 
+.page {
+  border: 2px solid #507916;
+  padding: 20px; 
+  margin-bottom: 25px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+  top: 3vh;
+  height: 84vh;
+  width: 80%;
+  z-index: 10;
+}
+
 /* Header Styles */
 
 .Header {
   font-size: 16px;
-  font-weight: 200;
   margin: 0.1em 0 0 0.04em;
   padding: 6px;
 }
 
 .Header h2 {
+  display: relative;
+  margin-top: 0.1em;
+  font-weight: normal;
   font-size: 20px;
 }
 
@@ -48,7 +66,7 @@ code {
 
 .navbar a {
   color: #333;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   text-decoration: none;
 }
@@ -73,11 +91,11 @@ code {
   flex-direction: column;
   float: right;
   font-size: calc(10px + 1vmin);
-  font-weight: bold;
+  font-weight: 500;
   overflow: hidden;
   padding: 40px;
   margin-right: 1%;
-  margin-top: 10%;
+  margin-top: 15%;
   top: 20vh;
   z-index: 2;
 }
@@ -85,7 +103,7 @@ code {
 /* Projects Page Styles */
 
 .projects {
-  align-items: center;
+  align-items: right;
   float: right;
   font-weight: bold;
   margin-bottom: 2px;
@@ -93,8 +111,14 @@ code {
   padding: 20px;
   position: relative;
   margin-right: 1%;
-  margin-top: 10%;
+  margin-top: 15%;
   z-index: 2;
+}
+
+.projects h2:hover {
+  color: #73AD21;
+  mix-blend-mode: difference;
+  cursor: pointer;
 }
 
 /* Contacts Page Styles */
@@ -107,20 +131,92 @@ code {
   margin-right: 20px;
   padding: 20px;
   margin-right: 1%;
-  margin-top: 10%;
+  margin-top: 15%;
   z-index: 2;
 }
 
-/* App Styles */
+/* Tempo Demo Styles */
 
-.App {
-  border: 2px solid #73AD21;
-  height: 80vh;
-  left: 5vw;
-  mix-blend-mode: difference;
-  padding: 20px; 
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider::before {
+  background: linear-gradient( 0deg, #525252 0%, #373737 100%);
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  box-shadow: 
+      0px -20px 20px #757575, 
+      0px 20px 35px #111111,
+      inset 0px 5px 6px #979797,
+      inset 0px -5px 6px #242424;
+}
+.slider::before, .knob {
+  width: 10em;
+  height: 10em;
   position: relative;
-  top: 6vh;
-  width: 90vw;
-  z-index: 10;
+}
+.knob::before, 
+.knob::after, 
+.slider::before {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+.knob::after {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid #333;
+  width: 150%;
+  height: 150%;
+  cursor: pointer;
+}
+
+/* The instructions box */
+.instruction {
+  border-style: solid
+}
+
+/* The play button */
+.playButton {
+  background-color: transparent;
+  margin: 60px auto;
+  position: relative;
+  width: 0;
+  height: 0;
+  top: -20px;
+  border-top: 25px solid transparent;
+  border-left: 50px solid rgba(207, 200, 200, 0.63);
+  border-bottom: 25px solid transparent;
+  cursor: pointer;
+}
+
+/* The next button */
+.nextButton {
+  background-color: transparent;
+  margin: 60px auto;
+  position: relative;
+  width: 0;
+  height: 0;
+  left: 175px;
+  border-top: 8px solid transparent;
+  border-left: 25px solid rgba(88, 78, 78, 0.63);
+  border-bottom: 8px solid transparent;
+  cursor: pointer;
+}
+
+.border {
+  border-style: solid;
+  border-color: #979797;
+  border-width: 5px;
+  position: relative;
+  display: grid;
+  top: 30px;
+  width: 500px;
+  justify-content: center;
+  align-items: center;
 }

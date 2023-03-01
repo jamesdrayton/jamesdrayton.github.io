@@ -1,0 +1,18 @@
+{
+    "projects": [
+        {
+            "name": "Tempo Determination",
+            "description": "Software for experimental use by the school of music at UBC",
+            "tools": ["Node.js", "HTML", "CSS", "Javascript"],
+            "role": "full-stack",
+            "year": 2022
+        },
+        {
+            "name": "Hallway Problem",
+            "description": "A basic recreation of the Hallway Problem using Bayes' theorem and a belief system",
+            "tools": ["Python"],
+            "role": "full-stack",
+            "year": 2023
+        }
+    ]
+}
