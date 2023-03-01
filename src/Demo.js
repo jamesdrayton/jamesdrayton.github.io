@@ -1,13 +1,12 @@
+import {useEffect, useState} from 'react';
+import TempoDemo from './project_data/tempo_demo/TempoDemo';
+
 const Demo = ({project}) => {
 
-    return ( 
-        <div className="page" style={{
-            display: project.display,
-            opacity: project.opacity
-          }}>
-            <h1>{project.name}</h1>
-          </div>
-     );
+  return ( 
+    // TODO: Add boolean logic so tempodemo only displays if a boolean is true
+    <TempoDemo project={project}></TempoDemo>
+    );
 }
  
 export default Demo;

@@ -1,10 +1,11 @@
 /* General Styles */
 
 body {
-  background-color: rgba(128, 128, 128, 0.273);
   font-family: 'Helvetica Neue';
+  background-color: #FCFCFC;
   margin: 0;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
 }
 
@@ -17,15 +18,17 @@ code {
 }
 
 .page {
-  border: 2px solid #73AD21;
-  mix-blend-mode: difference;
+  border: 2px solid #507916;
   padding: 20px; 
   margin-bottom: 25px;
   position: relative;
-  top: 2vh;
-  height: 90vh;
-  left: 2vw;
-  width: 94%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+  top: 3vh;
+  height: 84vh;
+  width: 80%;
   z-index: 10;
 }
 
@@ -130,4 +133,90 @@ code {
   margin-right: 1%;
   margin-top: 15%;
   z-index: 2;
+}
+
+/* Tempo Demo Styles */
+
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider::before {
+  background: linear-gradient( 0deg, #525252 0%, #373737 100%);
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  box-shadow: 
+      0px -20px 20px #757575, 
+      0px 20px 35px #111111,
+      inset 0px 5px 6px #979797,
+      inset 0px -5px 6px #242424;
+}
+.slider::before, .knob {
+  width: 10em;
+  height: 10em;
+  position: relative;
+}
+.knob::before, 
+.knob::after, 
+.slider::before {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+.knob::after {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid #333;
+  width: 150%;
+  height: 150%;
+  cursor: pointer;
+}
+
+/* The instructions box */
+.instruction {
+  border-style: solid
+}
+
+/* The play button */
+.playButton {
+  background-color: transparent;
+  margin: 60px auto;
+  position: relative;
+  width: 0;
+  height: 0;
+  top: -20px;
+  border-top: 25px solid transparent;
+  border-left: 50px solid rgba(207, 200, 200, 0.63);
+  border-bottom: 25px solid transparent;
+  cursor: pointer;
+}
+
+/* The next button */
+.nextButton {
+  background-color: transparent;
+  margin: 60px auto;
+  position: relative;
+  width: 0;
+  height: 0;
+  left: 175px;
+  border-top: 8px solid transparent;
+  border-left: 25px solid rgba(88, 78, 78, 0.63);
+  border-bottom: 8px solid transparent;
+  cursor: pointer;
+}
+
+.border {
+  border-style: solid;
+  border-color: #979797;
+  border-width: 5px;
+  position: relative;
+  display: grid;
+  top: 30px;
+  width: 500px;
+  justify-content: center;
+  align-items: center;
 }

@@ -8,4 +8,11 @@ TODO:
 ~~1. Implement updateDemo in App.js so it updates the display information about each demo page~~
 ~~2. Alter Demo.js so it can parse the display information and display the right demo~~
 3. Modify VanLab's tempo_determination to work here
-4. Have Demo.js display it
+4. Have Demo.js display it only when the right project is clicked
+If each demo has a boolean associated with it and we apply jsx logic (e.g. {boolean && <Demo project={projects[currDemo]}></Demo>})
+then the boolean could be passed through.
+~~5. Fix different displays on apple iOS~~
+6. Fill in contacts info
+7. Finalize text on "About" page
+8. Finalize display text for projects
+9. Alter the projects in App.js to work off of a .json server API

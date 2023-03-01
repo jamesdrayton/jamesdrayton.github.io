@@ -15,10 +15,10 @@ function App() {
   ]);
 
   // Display data for the list of projects
-  const [projects, setProjects] = useState([{ name: "Projects:", id: 0, display: "none", opacity: 0},
+  const [projects, setProjects] = useState([
     {
       name: "Hallway Problem",
-      id: 1,
+      id: 0,
       display: "none",
       opacity: 0,
       description: "A Python recreation of the Hallway Problem using Bayes' theorem",
@@ -27,7 +27,7 @@ function App() {
     },
     {
       name: "Tempo Determination",
-      id: 2,
+      id: 1,
       display: "none",
       opacity: 0,
       description: "Software for experimental use by the school of music at UBC",
@@ -90,6 +90,7 @@ function App() {
       </div>
       <div className="demos">
         <Demo project={projects[currDemo]}></Demo>
+        <br></br>
       </div>
     </div>
   );
