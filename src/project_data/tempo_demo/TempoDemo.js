@@ -1,24 +1,22 @@
 import {useEffect, useState, useRef} from 'react';
-import { PitchShifter } from "soundtouchjs";
+import { PitchShifter } from 'soundtouchjs';
+import useTempoKnob from './useTempoKnob';
 
 const TempoDemo = ({project}) => {
-    const [audioBuffer, setAudioBuffer] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isRotating, setIsRotating] = useState(false);
     const [shifter, setShifter] = useState(null);
-    const [tempo, setTempo] = useState(100);
     // TODO: Set up an alternate prepaudiopaths fn
     const [audioSrc, setAudioSrc] = useState("./Audio/1_context_75.wav?_t=" + Date.now());
     const [audioCtx, setAudioCtx] = useState(new AudioContext());
     const knob = useRef();
     const changeRate = 0.2;                       // The rate at which the tempo knob changes tempo
 
-    let tracker;
     let trueTempo = 800;
+    let tempo = 100;
     let prevX = 0;
     let prevY = 0;
     let deltaT = 0;
-    let beat = 1;
 
     useEffect(() => {
       fetchAudioData(audioSrc);
@@ -44,27 +42,16 @@ const TempoDemo = ({project}) => {
       console.log('Error decoding buffer: ' + e.message);
     }
 
-    function changeTempo(t) { 
-      setTempo(t);
+    async function changeTempo(t) { 
+      tempo = t;
       shifter.tempo = t/100;
       shifter.pitch = 1;     // ensures the pitch stays the same after changing tempo
-      // Resets the beat tracker every time the tempo changes
-      clearInterval(tracker);
-      tracker = setInterval(beatTrack, (trueTempo - (trueTempo * deltaT/100)));
-    }
-
-    function beatTrack() {
-      // console.log("Beat #: " + beat);
-      beat++;
-      if (shifter.percentagePlayed == 100) {
-          shifter.percentagePlayed = 0;
-      }
     }
 
     function tempoKnob(e) {
     
-      const knobW = knob.current.getBoundingClientRect().x - (knob.current.getBoundingClientRect().width / 2);
-      const knobH = knob.current.getBoundingClientRect().y - (knob.current.getBoundingClientRect().height / 2);
+      const knobW = knob.current.getBoundingClientRect().width;
+      const knobH = knob.current.getBoundingClientRect().height;
   
       // Mouse coordinates offset by the knob size
       const currX = e.clientX - knob.current.offsetLeft;
@@ -72,55 +59,55 @@ const TempoDemo = ({project}) => {
   
       const deltaX = knobW - currX;
       const deltaY = knobH - currY;
-      let tem = tempo;
   
       // mouse coordinates in radians and degrees
       const rad = Math.atan2(deltaY, deltaX);
       var deg = rad * (180 / Math.PI);
+      // console.log(deg);
   
       // Should probably make this a switch statement
       if (currY < knobH && currX > knobW) { 
-          // console.log("Top Right");
+          console.log("Top Right");
           if (prevX <= currX && prevY <= currY) {
               // console.log("Increasing");
-              tem += changeRate;
+              changeTempo(tempo + changeRate);
               deltaT += changeRate;
           } else if (prevX >= currX && prevY >= currY) {
               // console.log("Decreasing");
-              tem -= changeRate;
+              changeTempo(tempo - changeRate);
               deltaT -= changeRate;
           }
       } else if (currY > knobH && currX > knobW) {
-          // console.log("Bottom Right");
+          console.log("Bottom Right");
           if (prevX >= currX ** prevY >= prevY) {
               // console.log("Increasing");
-              tem += changeRate;
+              changeTempo(tempo + changeRate);
               deltaT += changeRate;
           } else if (prevX <= currX && prevY <= currY) {
               // console.log("Decreasing");
-              tem -= changeRate;
+              changeTempo(tempo - changeRate);
               deltaT -= changeRate;
           }
       } else if (currY < knobH && currX < knobW) {
-          // console.log("Top Left");
+          console.log("Top Left");
           if (prevX <= currX && prevY >= currY) {
               // console.log("Increasing");
-              tem += changeRate;
+              changeTempo(tempo + changeRate);
               deltaT += changeRate;
           } else if (prevX >= currX && prevY <= currY) {
               // console.log("Decreasing");
-              tem -= changeRate;
+              changeTempo(tempo - changeRate);
               deltaT -= changeRate;
           }
       } else if (currY > knobH && currX < knobW) {
-          // console.log("Bottom Left");
+          console.log("Bottom Left");
           if (prevX >= currX && prevY >= currY) {
               // console.log("Increasing");
-              tem += changeRate;
+              changeTempo(tempo + changeRate);
               deltaT += changeRate;
           } else if (prevX <= currX && prevY <= currY) {
               // console.log("Decreasing");
-              tem -= changeRate;
+              changeTempo(tempo - changeRate);
               deltaT -= changeRate;
           }
       }
@@ -128,11 +115,11 @@ const TempoDemo = ({project}) => {
       prevX = currX;
       prevY = currY;
       if (tempo > 0) {
-          changeTempo(tem);
+          //
       } else {
-          tempo = 1;
+          changeTempo(1);
       }
-      console.log(tempo);
+      // console.log(tempo);
       return deg;
     }
 
@@ -143,15 +130,18 @@ const TempoDemo = ({project}) => {
 
     function endRotation() {
       window.removeEventListener("mousemove", rotate);
+      window.removeEventListener("touchmove", rotate);
       knob.current.style.setProperty('border', 'initial');
     }
 
     function startRotation() {
       if(isPlaying) {
         window.addEventListener("mousemove", rotate);
+        window.addEventListener("touchmove", rotate);
         knob.current.style.setProperty('border', '3px solid #fff');
         knob.current.style.setProperty('border-radius', '200px');
         window.addEventListener("mouseup", endRotation);
+        window.addEventListener("touchend", endRotation);
       }
     }
 
@@ -181,7 +171,9 @@ const TempoDemo = ({project}) => {
                 <input type="hidden" className="playAudio"></input>
             </div>
             <div className="slider">
-                <form className="knob" ref={knob} onMouseDown={isPlaying ? startRotation: undefined}>
+                <form className="knob" ref={knob} 
+                      onMouseDown={isPlaying ? startRotation: undefined} 
+                      onTouchStart={isPlaying ? startRotation: undefined}>
                     <input type="hidden" className="tempoKnob"></input>
                 </form>
             </div>
