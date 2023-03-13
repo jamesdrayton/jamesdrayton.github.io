@@ -19,7 +19,7 @@ code {
 
 .page {
   border: 2px solid #507916;
-  background: linear-gradient(135deg, rgba(252,252,252,1) 30%, rgba(80,121,22,1) 300%);
+  /* background: linear-gradient(135deg, rgba(252,252,252,1) 30%, rgba(80,121,22,1) 300%); */
   padding: 20px; 
   margin-bottom: 25px;
   position: relative;
@@ -103,7 +103,7 @@ code {
 
 /* Projects Page Styles */
 
-.projects {
+.project-list {
   align-items: right;
   float: right;
   font-weight: bold;
@@ -116,7 +116,7 @@ code {
   z-index: 2;
 }
 
-.projects h2:hover {
+.project-list h2:hover {
   color: #73AD21;
   mix-blend-mode: difference;
   cursor: pointer;
@@ -124,7 +124,7 @@ code {
 
 /* Contacts Page Styles */
 
-.contact {
+.contacts {
   align-items: center;
   float: right;
   font-weight: bold;
@@ -132,8 +132,21 @@ code {
   margin-right: 20px;
   padding: 20px;
   margin-right: 1%;
-  margin-top: 15%;
+  margin-top: 25%;
   z-index: 2;
+}
+
+.contacts a {
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 20px;
+}
+
+.contacts a:hover {
+  color: #73AD21;
+  mix-blend-mode: difference;
 }
 
 /* Tempo Demo Styles */
@@ -220,4 +233,30 @@ code {
   width: 500px;
   justify-content: center;
   align-items: center;
+}
+
+.fadeIn {
+  animation: fadeIn 2s;
+}
+
+.fadeOut {
+  animation: fadeOut 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

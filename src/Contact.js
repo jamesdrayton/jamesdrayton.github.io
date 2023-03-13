@@ -3,15 +3,12 @@
 const Contact = ({page}) => {
 
     return ( 
-        <section className="contact" style={{
-            display: page.display,
-            opacity: page.opacity
-        }}>
+        <section className={page.display ? "fadeIn" : "fadeOut"} style={page.display ? {display: 'block'}: {display: 'none'}}>
             <div className="contacts">
-                <p>Contacts page</p>
-            </div>
-            <div className="resume">
-                <a>Resume</a>
+                <p>
+                    <a href="https://github.com/jamesdrayton" target="_blank"> Github </a>
+                    <a>Resume</a>
+                </p>
             </div>
         </section>
      );

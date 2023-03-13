@@ -3,15 +3,16 @@
 const Projects = ({page, projects, updateDemo}) => {
 
     return ( 
-        <section className="projects" style={{
-            display: page.display,
-            opacity: page.opacity
-        }}>
+        <section className={page.display ? "fadeIn" : "fadeOut"} style={page.display ? {display: 'block'}: {display: 'none'}}>
             <div className="project-list">
                 {projects.map((project) => (
                     <div className="preview">
-                        <h2 onClick={() => updateDemo(project)}>{project.name}</h2>
-                        <a>{project.description}</a>
+                        <div className="title">
+                            <h2 onClick={() => updateDemo(project)}>{project.name}</h2>
+                        </div>
+                        <div className="description">
+                            <a>{project.year} {project.role}</a>
+                        </div>
                     </div>
                 ))}
             </div>

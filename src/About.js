@@ -3,10 +3,7 @@
 const About = ({page}) => {
 
     return ( 
-        <section className="about" style={{
-            display: page.display,
-            opacity: page.opacity
-        }}>
+        <section className={page.display ? "fadeIn" : "fadeOut"} style={page.display ? {display: 'block'}: {display: 'none'}}>
             <p className="aboutme">
                 <span> Growing up in Canada,  </span>
                 <span> Bangladesh, Indonesia, </span>

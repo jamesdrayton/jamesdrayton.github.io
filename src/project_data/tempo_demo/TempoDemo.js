@@ -2,9 +2,8 @@ import {useEffect, useState, useRef} from 'react';
 import { PitchShifter } from 'soundtouchjs';
 import useTempoKnob from './useTempoKnob';
 
-const TempoDemo = ({project}) => {
+const TempoDemo = () => {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [isRotating, setIsRotating] = useState(false);
     const [shifter, setShifter] = useState(null);
     // TODO: Set up an alternate prepaudiopaths fn
     const [audioSrc, setAudioSrc] = useState("./Audio/1_context_75.wav?_t=" + Date.now());
@@ -20,6 +19,7 @@ const TempoDemo = ({project}) => {
 
     useEffect(() => {
       fetchAudioData(audioSrc);
+      knob.current.scrollIntoView();
     }, []);
     
     async function fetchAudioData(url) {
@@ -42,7 +42,7 @@ const TempoDemo = ({project}) => {
       console.log('Error decoding buffer: ' + e.message);
     }
 
-    async function changeTempo(t) { 
+    function changeTempo(t) { 
       tempo = t;
       shifter.tempo = t/100;
       shifter.pitch = 1;     // ensures the pitch stays the same after changing tempo
@@ -67,7 +67,7 @@ const TempoDemo = ({project}) => {
   
       // Should probably make this a switch statement
       if (currY < knobH && currX > knobW) { 
-          console.log("Top Right");
+          // console.log("Top Right");
           if (prevX <= currX && prevY <= currY) {
               // console.log("Increasing");
               changeTempo(tempo + changeRate);
@@ -78,8 +78,8 @@ const TempoDemo = ({project}) => {
               deltaT -= changeRate;
           }
       } else if (currY > knobH && currX > knobW) {
-          console.log("Bottom Right");
-          if (prevX >= currX ** prevY >= prevY) {
+          // console.log("Bottom Right");
+          if (prevX >= currX && prevY >= prevY) {
               // console.log("Increasing");
               changeTempo(tempo + changeRate);
               deltaT += changeRate;
@@ -89,7 +89,7 @@ const TempoDemo = ({project}) => {
               deltaT -= changeRate;
           }
       } else if (currY < knobH && currX < knobW) {
-          console.log("Top Left");
+          // console.log("Top Left");
           if (prevX <= currX && prevY >= currY) {
               // console.log("Increasing");
               changeTempo(tempo + changeRate);
@@ -100,7 +100,7 @@ const TempoDemo = ({project}) => {
               deltaT -= changeRate;
           }
       } else if (currY > knobH && currX < knobW) {
-          console.log("Bottom Left");
+          // console.log("Bottom Left");
           if (prevX >= currX && prevY >= currY) {
               // console.log("Increasing");
               changeTempo(tempo + changeRate);
@@ -114,9 +114,7 @@ const TempoDemo = ({project}) => {
   
       prevX = currX;
       prevY = currY;
-      if (tempo > 0) {
-          //
-      } else {
+      if (tempo <= 0) {
           changeTempo(1);
       }
       // console.log(tempo);
@@ -161,10 +159,7 @@ const TempoDemo = ({project}) => {
     }    
 
     return ( 
-        <div className="page" style={{
-            display: project.display,
-            opacity: project.opacity,
-            }}>
+        <div className="page">
             <h1>Tempo Determination Experiment</h1>
             <p>Instructions: </p>
             <div className="playButton" onClick={startTest}>

@@ -1,11 +1,12 @@
-import {useEffect, useState} from 'react';
 import TempoDemo from './project_data/tempo_demo/TempoDemo';
 
-const Demo = ({project}) => {
+const Demo = ({projects, currDemo}) => {
 
   return ( 
-    // TODO: Add boolean logic so tempodemo only displays if a boolean is true
-    <TempoDemo project={project}></TempoDemo>
+    <div className="demo">
+      {/* {projects[0].display && <HallwayDemo></HallwayDemo>} */}
+      {projects[1].display && <TempoDemo></TempoDemo>}
+    </div>
     );
 }
  

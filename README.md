@@ -5,14 +5,11 @@ All projects will have links to their github repositories and summaries of their
 Projects with working demos will also have links to those demos hosted elsewhere on the github pages site.
 
 TODO: 
-~~1. Implement updateDemo in App.js so it updates the display information about each demo page~~
-~~2. Alter Demo.js so it can parse the display information and display the right demo~~
-3. Modify VanLab's tempo_determination to work here
-4. Have Demo.js display it only when the right project is clicked
-If each demo has a boolean associated with it and we apply jsx logic (e.g. {boolean && <Demo project={projects[currDemo]}></Demo>})
-then the boolean could be passed through.
-~~5. Fix different displays on apple iOS~~
-6. Fill in contacts info
-7. Finalize text on "About" page
-8. Finalize display text for projects
-9. Alter the projects in App.js to work off of a .json server API
+1. Display project data in Demo.js for the correct project when clicked in the projects-list
+    - Because App.js already makes sure only one project has display: true at a time, we just need to make a way
+    for Demo.js to parse which one has display and set the appropriate boolean so it displays.
+    - Make an array of booleans for every project in usestate!
+2. Alter the projects in App.js to work off of a .json server API
+3. Complete the actual text for the content in the home page and link to resume
+4. Clean up tempoDemo
+5. Make different css files for the different pages
