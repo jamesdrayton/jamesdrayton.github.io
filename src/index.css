@@ -99,6 +99,18 @@ code {
   margin-top: 15%;
   top: 20vh;
   z-index: 2;
+  text-decoration: none;
+}
+
+.aboutme a {
+  color: #333;
+  font-size: calc(10px + 1vmin);
+  text-decoration: none;
+}
+
+.aboutme a:hover {
+  color: #73AD21;
+  mix-blend-mode: difference;
 }
 
 /* Projects Page Styles */

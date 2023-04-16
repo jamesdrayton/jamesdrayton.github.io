@@ -7,7 +7,8 @@ const Contact = ({page}) => {
             <div className="contacts">
                 <p>
                     <a href="https://github.com/jamesdrayton" target="_blank"> Github </a>
-                    <a>Resume</a>
+                    <a href="./James Drayton Beninger_Resume.pdf"> Resume </a>
+                    <a href="https://www.linkedin.com/in/jamesdraytonbeninger/"> LinkedIn</a>
                 </p>
             </div>
         </section>

@@ -20,19 +20,31 @@ function App() {
       name: "Hallway Problem",
       id: 0,
       display: false,
-      link: "HallwayDemo",
+      link: "https://github.com/jamesdrayton/Hallway-Problem",
       description: "A Python recreation of the Hallway Problem using Bayes' theorem",
       role: "full-stack",
+      org: "",
       year: 2023
     },
     {
       name: "Tempo Determination",
       id: 1,
       display: false,
-      link: "TempoDemo",
+      link: "#TempoDemo",
       description: "Software for experimental use by the school of music at UBC",
       role: "full-stack",
+      org: "UBC",
       year: 2022
+    },
+    {
+      name: "Web portfolio",
+      id: 3,
+      display: false,
+      link: "https://github.com/jamesdrayton/jamesdrayton.github.io",
+      description: "",
+      role: "full-stack",
+      org: "",
+      year: 2023
     }
   ])
   const [currDemo, setCurrDemo] = useState(null);
@@ -51,10 +63,10 @@ function App() {
     setCurrDemo(null);
     setPages(newPages);
   }
-
+  
   // Updates which demo page is currently being displayed
-  // Takes a project (demo) and sets display to be true for that project
-  // in the projects list. Sets display as false for every other project.
+  // Takes a project (demo) and sets 'display' to be true for that project
+  // in the projects list. Sets 'display' as false for every other project.
   // If demo is null then no project is displayed at all (all are false).
   const updateDemo = (demo) => {
     const newProjects = [];
@@ -63,6 +75,9 @@ function App() {
         project.display = false;
       } else {
         project.display = true;
+        if (project.link.startsWith('https://')) {
+          window.open(project.link, '_blank');
+        }
         setCurrDemo(demo.id);
       }
       newProjects.push(project);

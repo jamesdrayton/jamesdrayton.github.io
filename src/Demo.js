@@ -5,7 +5,7 @@ const Demo = ({projects, currDemo}) => {
   return ( 
     <div className="demo">
       {/* {projects[0].display && <HallwayDemo></HallwayDemo>} */}
-      {projects[1].display && <TempoDemo></TempoDemo>}
+      {projects[2].display && <TempoDemo></TempoDemo>}
     </div>
     );
 }
