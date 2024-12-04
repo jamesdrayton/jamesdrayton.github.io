@@ -169,11 +169,12 @@ const TempoDemo = () => {
 
     return ( 
         <div className="page">
-            <h1>Tempo Determination Experiment</h1>
+            <h1 style={{color: '#73AD21'}}>Tempo Determination Experiment</h1>
+            <h2>Instructions:</h2>
             <p> {!isFinished &&
-              ("Instructions: Click the play button to start audio playback and turn the knob to change the tempo while" +
-              "the audio is playing. The audio starts at a slightly different tempo from the original tempo of the file." +
-              "Click the play button again when you think you've reached the right tempo. The official experiment uses" +
+              ("Click the play button to start audio playback and turn the knob to change the tempo. " +
+              "The audio starts at a slightly different tempo from the original tempo of the file. " +
+              "Click the play button again when you think you've reached the right tempo. The official experiment uses " +
               "many similar audio files to compare how rhythm, syncopation, and other factors impact perception of tempo.")}
             </p>
             <p>{isFinished && ("Your final tempo was " + Math.round(trueTempo) + "ms, " + Math.round((trueTempo - 800)) + "ms off")}</p>
@@ -189,7 +190,7 @@ const TempoDemo = () => {
             </div>
             <script type="module" src="shifter.js"></script>
             <script type="module" src="TempoDemo.js"></script>
-          </div>
+        </div>
      );
 }
  
